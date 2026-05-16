@@ -18,7 +18,17 @@ service — no DVSA credentials needed to try it.
 
 ## 2. Software you need installed
 
-- **Node.js 18+** (LTS recommended): https://nodejs.org
+- **Node.js 20 LTS** (or 22 LTS): https://nodejs.org — **pick the LTS download**, not "Current".
+  - ⚠️ **Do not use Node 24** on Windows. `better-sqlite3` does not yet ship
+    prebuilt binaries for Node 24 on Windows, so `npm install` will try to
+    compile it from C++ source and fail unless you have Python and Visual
+    Studio Build Tools installed.
+  - If you already have Node 24, install [nvm-windows](https://github.com/coreybutler/nvm-windows/releases)
+    and switch:
+    ```cmd
+    nvm install 20.18.0
+    nvm use 20.18.0
+    ```
 - A code editor — **VS Code** is recommended: https://code.visualstudio.com
 - (Optional) **Claude Code** if you want AI help editing the project
 
@@ -28,6 +38,8 @@ Check your install:
 node --version
 npm --version
 ```
+
+`node --version` should report `v20.x.x` or `v22.x.x`.
 
 ## 3. Install dependencies
 
