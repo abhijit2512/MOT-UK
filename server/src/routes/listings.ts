@@ -8,7 +8,7 @@ const router = Router();
 router.get('/', (_req, res) => {
   const rows = db
     .prepare('SELECT * FROM vehicle_listings ORDER BY created_at DESC')
-    .all() as VehicleListing[];
+    .all() as unknown as VehicleListing[];
   res.json(rows);
 });
 
@@ -16,7 +16,7 @@ router.get('/:id', (req, res) => {
   const id = Number(req.params.id);
   if (!Number.isInteger(id)) return res.status(400).json({ error: 'invalid id' });
 
-  const row = db.prepare('SELECT * FROM vehicle_listings WHERE id = ?').get(id) as VehicleListing | undefined;
+  const row = db.prepare('SELECT * FROM vehicle_listings WHERE id = ?').get(id) as unknown as VehicleListing | undefined;
   if (!row) return res.status(404).json({ error: 'listing not found' });
   res.json(row);
 });

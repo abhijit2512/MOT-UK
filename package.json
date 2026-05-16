@@ -4,7 +4,7 @@
   "private": true,
   "description": "MOTMate UK - UK vehicle MOT checker and vehicle selling MVP",
   "engines": {
-    "node": ">=18 <24"
+    "node": ">=22.5"
   },
   "scripts": {
     "install:all": "npm install && npm --prefix server install && npm --prefix client install",

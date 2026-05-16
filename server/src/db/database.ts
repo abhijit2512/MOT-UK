@@ -1,4 +1,8 @@
-import Database from 'better-sqlite3';
+// Uses Node's built-in SQLite (`node:sqlite`).
+// Available since Node 22.5 (experimental) and stable in Node 24+.
+// No native compilation required — works on plain Windows without
+// Visual Studio Build Tools or Python.
+import { DatabaseSync } from 'node:sqlite';
 import path from 'path';
 import fs from 'fs';
 
@@ -8,8 +12,8 @@ if (!fs.existsSync(dataDir)) {
 }
 
 const dbPath = path.join(dataDir, 'motmate.db');
-export const db = new Database(dbPath);
-db.pragma('journal_mode = WAL');
+export const db = new DatabaseSync(dbPath);
+db.exec('PRAGMA journal_mode = WAL');
 
 export function initDb(): void {
   db.exec(`

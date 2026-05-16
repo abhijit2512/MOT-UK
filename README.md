@@ -18,17 +18,10 @@ service — no DVSA credentials needed to try it.
 
 ## 2. Software you need installed
 
-- **Node.js 20 LTS** (or 22 LTS): https://nodejs.org — **pick the LTS download**, not "Current".
-  - ⚠️ **Do not use Node 24** on Windows. `better-sqlite3` does not yet ship
-    prebuilt binaries for Node 24 on Windows, so `npm install` will try to
-    compile it from C++ source and fail unless you have Python and Visual
-    Studio Build Tools installed.
-  - If you already have Node 24, install [nvm-windows](https://github.com/coreybutler/nvm-windows/releases)
-    and switch:
-    ```cmd
-    nvm install 20.18.0
-    nvm use 20.18.0
-    ```
+- **Node.js 22 LTS or newer** (Node 24 also works): https://nodejs.org
+  - Node 22.5+ is required because the project uses Node's built-in
+    `node:sqlite` module. This means **no native C++ compilation** is
+    needed and you don't need Python or Visual Studio Build Tools.
 - A code editor — **VS Code** is recommended: https://code.visualstudio.com
 - (Optional) **Claude Code** if you want AI help editing the project
 
@@ -39,7 +32,7 @@ node --version
 npm --version
 ```
 
-`node --version` should report `v20.x.x` or `v22.x.x`.
+`node --version` should report `v22.x.x` or higher.
 
 ## 3. Install dependencies
 
